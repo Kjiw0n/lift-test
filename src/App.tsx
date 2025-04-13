@@ -1,14 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Test from './Test';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import OAuthSuccessPage from './pages/OAuthSuccessPage';
+import UserListPage from './pages/UserListPage';
+import "./App.css";
 
-function App() {
+export default function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Test />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/oauth-success" element={<OAuthSuccessPage />} />
+        <Route path="/users" element={<UserListPage />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
-
-export default App;
