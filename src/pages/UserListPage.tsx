@@ -8,7 +8,7 @@ export default function UserListPage() {
 
   useEffect(() => {
     axios.get('/users')
-      .then(res => setUsers(res.data))
+      .then(res => setUsers(res.data.data))
       .catch(err => {
         setError('유저 목록을 불러올 수 없습니다.');
         console.error(err);
