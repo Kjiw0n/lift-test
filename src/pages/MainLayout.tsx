@@ -38,7 +38,7 @@ const LayoutWrapper = styled.div`
 `;
 
 const Sidebar = styled.nav`
-	width: 24rem;
+	width: 15%;
 	flex-direction: column;
 
 	background-color: #ffffff;
@@ -52,9 +52,10 @@ const Sidebar = styled.nav`
 `;
 
 const Logo = styled.h1`
-	font-size: 2rem;
-	font-weight: 700;
+	font-size: 3rem;
+	font-weight: 600;
 	margin-bottom: 40px;
+	color: ${({ theme }) => theme.colors.title};
 `;
 
 const MenuList = styled.div`
@@ -64,19 +65,19 @@ const MenuList = styled.div`
 `;
 
 const MenuItem = styled.button`
-	height: 4rem;
+	height: 5rem;
 	width: 100%;
 	background: none;
 	border: none;
 
-	font-size: 1.6rem;
-	color: gray;
+	font-size: 2rem;
+	color: ${({ theme }) => theme.colors.secondaryText};
 	text-align: left;
 	cursor: pointer;
 
 	&:hover {
-		color: black;
-		background-color: rgba(67, 145, 237, 0.1);
+		color: ${({ theme }) => theme.colors.title};
+		background-color: ${({ theme }) => theme.colors.hover};
 	}
 `;
 
@@ -85,8 +86,8 @@ const LogoutBtn = styled.button`
 	bottom: 20px;
 	background: none;
 	border: none;
-	font-size: 1.6rem;
-	color: #000;
+	font-size: 2rem;
+	color: ${({ theme }) => theme.colors.primaryText};
 	cursor: pointer;
 	text-align: left;
 `;
@@ -94,5 +95,5 @@ const LogoutBtn = styled.button`
 const Content = styled.main`
 	flex-grow: 1;
 	padding: 40px;
-	background: #f5f6fa;
+	background: ${({ theme }) => theme.colors.background};
 `;
