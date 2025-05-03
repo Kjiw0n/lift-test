@@ -1,8 +1,15 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
 
 function MainLayout() {
 	const navigate = useNavigate();
+	const location = useLocation();
+	const [selectedMenu, setSelectedMenu] = useState('/');
+
+	useEffect(() => {
+		setSelectedMenu(location.pathname);
+	}, [location.pathname]);
 
 	const handleLogout = () => {
 		localStorage.removeItem('access_token');
@@ -15,10 +22,18 @@ function MainLayout() {
 			<Sidebar>
 				<Logo>LIFT</Logo>
 				<MenuList>
-					<MenuItem onClick={() => navigate('/')}>Dashboard</MenuItem>
-					<MenuItem onClick={() => navigate('/board')}>Board</MenuItem>
-					<MenuItem onClick={() => navigate('/user')}>UserPage</MenuItem>
-					<MenuItem onClick={() => navigate('/setting')}>Settings</MenuItem>
+					<MenuItem selected={selectedMenu === '/'} onClick={() => navigate('/')}>
+						Dashboard
+					</MenuItem>
+					<MenuItem selected={selectedMenu === '/board'} onClick={() => navigate('/board')}>
+						Board
+					</MenuItem>
+					<MenuItem selected={selectedMenu === '/user'} onClick={() => navigate('/user')}>
+						UserPage
+					</MenuItem>
+					<MenuItem selected={selectedMenu === '/setting'} onClick={() => navigate('/setting')}>
+						Settings
+					</MenuItem>
 				</MenuList>
 				<LogoutBtn onClick={handleLogout}>Log out</LogoutBtn>
 			</Sidebar>
@@ -38,7 +53,7 @@ const LayoutWrapper = styled.div`
 `;
 
 const Sidebar = styled.nav`
-	width: 15%;
+	width: 10%;
 	flex-direction: column;
 
 	background-color: #ffffff;
@@ -64,16 +79,19 @@ const MenuList = styled.div`
 	gap: 10px;
 `;
 
-const MenuItem = styled.button`
+const MenuItem = styled.button<{ selected?: boolean }>`
 	height: 5rem;
 	width: 100%;
 	background: none;
 	border: none;
+	border-radius: 5px;
 
 	font-size: 2rem;
-	color: ${({ theme }) => theme.colors.secondaryText};
+	color: ${({ theme, selected }) => (selected ? theme.colors.title : theme.colors.secondaryText)};
 	text-align: left;
 	cursor: pointer;
+
+	background-color: ${({ theme, selected }) => (selected ? theme.colors.hover : 'transparent')};
 
 	&:hover {
 		color: ${({ theme }) => theme.colors.title};
