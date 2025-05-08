@@ -8,6 +8,7 @@ export const theme = {
 		title: '#1f2937', // 큰 제목용 텍스트
 		primaryText: '#4b5563', // 일반 텍스트
 		secondaryText: '#9ca3af', // 안내, 설명, placeholder
+		transparent: 'rgba(0, 0, 0, 0)',
 
 		// 포인트 컬러
 		accent: '#3b82f6', // 파란색 (버튼, 강조)
