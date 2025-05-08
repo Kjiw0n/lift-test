@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
 
-import userLogin from '../apis/auth/login';
+// import userLogin from '@/apis/auth/login';
 import googleImg from '@/assets/google-logo.png';
 import githubImg from '@/assets/github-logo.png';
 
