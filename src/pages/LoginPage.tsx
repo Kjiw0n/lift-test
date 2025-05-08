@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
 
-import userLogin from '../apis/auth/login';
+// import userLogin from '@/apis/auth/login';
 import googleImg from '@/assets/google-logo.png';
 import githubImg from '@/assets/github-logo.png';
 
@@ -56,14 +56,6 @@ const LoginPage = () => {
 
 export default LoginPage;
 
-const loginPageColors = {
-	background: '#f8fafc', // 매우 연한 회청색 (거의 흰색)
-	title: '#1f2937', // 어두운 네이비/차콜 계열 (자주 쓰임)
-	primaryText: '#4b5563', // 중간 회색 텍스트 (안내/본문용)
-	secondaryText: '#9ca3af', // 흐릿한 회색 (placeholder 등)
-	accent: '#3b82f6', // 평범한 파란색 (로그인 버튼 등)
-};
-
 const LoginPageLayout = styled.div`
 	display: flex;
 	width: 100%;
@@ -71,7 +63,7 @@ const LoginPageLayout = styled.div`
 	justify-content: space-between;
 	align-items: center;
 
-	background-color: ${loginPageColors.background};
+	background-color: ${({ theme }) => theme.colors.background};
 
 	gap: 50px;
 `;
@@ -92,7 +84,7 @@ const LoginPageTitle = styled.p`
 	font-size: 7rem;
 	font-weight: 700;
 
-	color: ${loginPageColors.title};
+	color: ${({ theme }) => theme.colors.title};
 `;
 
 const LoginPageText = styled.p`
@@ -100,7 +92,7 @@ const LoginPageText = styled.p`
 	font-weight: 400;
 	font-style: italic;
 
-	color: ${loginPageColors.secondaryText};
+	color: ${({ theme }) => theme.colors.secondaryText};
 `;
 
 const LoginContainer = styled.div`
@@ -121,7 +113,7 @@ const LoginContainer = styled.div`
 const LoginTitle = styled.p`
 	font-size: 4rem;
 	font-weight: 600;
-	color: ${loginPageColors.primaryText};
+	color: ${({ theme }) => theme.colors.primaryText};
 `;
 
 const LocalLoginContainer = styled.div`
@@ -149,7 +141,7 @@ const LoginBtn = styled.button`
 	width: 40rem;
 	height: 7rem;
 	border-radius: 20px;
-	background-color: ${loginPageColors.accent};
+	background-color: ${({ theme }) => theme.colors.accent};
 
 	font-size: 2rem;
 	font-weight: 600;
@@ -168,13 +160,13 @@ const LoginTextContainer = styled.div`
 const LoginText = styled.p`
 	font-size: 1.6rem;
 	font-weight: 400;
-	color: ${loginPageColors.secondaryText};
+	color: ${({ theme }) => theme.colors.secondaryText};
 	cursor: pointer;
 	&:hover {
 		text-decoration: underline;
 	}
 	&:active {
-		color: ${loginPageColors.accent};
+		color: ${({ theme }) => theme.colors.accent};
 	}
 `;
 
