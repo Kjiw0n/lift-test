@@ -2,16 +2,6 @@ import { BoardType } from '@/types/Board';
 
 export const dummyBoards: BoardType[] = [
 	{
-		title: 'Backlog',
-		cards: [
-			{
-				status: 'TODO',
-				title: '요구사항으로 태스크 자동 생성 기능',
-				description: 'Unassigned',
-			},
-		],
-	},
-	{
 		title: 'To Do',
 		cards: [
 			{
@@ -39,12 +29,12 @@ export const dummyBoards: BoardType[] = [
 	{
 		title: 'DONE',
 		cards: [
-			{ status: 'COMPLETE', title: '칸반보드 기능', description: 'ccg' },
-			{ status: 'COMPLETE', title: '사용자 인증/인가 기능 구현', description: 'ccg' },
-			{ status: 'COMPLETE', title: '관리자 기능 구현', description: 'kyle' },
-			{ status: 'COMPLETE', title: '프로젝트 권한 기반 접근 제어', description: 'kyle' },
-			{ status: 'COMPLETE', title: '드래그&드롭 기능 추가', description: 'ccg' },
-			{ status: 'COMPLETE', title: '보드 순서 변경 기능', description: 'ccg' },
+			{ status: 'DONE', title: '칸반보드 기능', description: 'ccg' },
+			{ status: 'DONE', title: '사용자 인증/인가 기능 구현', description: 'ccg' },
+			{ status: 'DONE', title: '관리자 기능 구현', description: 'kyle' },
+			{ status: 'DONE', title: '프로젝트 권한 기반 접근 제어', description: 'kyle' },
+			{ status: 'DONE', title: '드래그&드롭 기능 추가', description: 'ccg' },
+			{ status: 'DONE', title: '보드 순서 변경 기능', description: 'ccg' },
 		],
 	},
 ];

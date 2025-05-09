@@ -72,7 +72,7 @@ const BoardContainer = styled.div`
 `;
 
 const BoardItem = styled.div`
-	width: 100%;
+	width: fit-content;
 	min-width: 40rem;
 	height: 90rem;
 	display: flex;
@@ -119,7 +119,7 @@ const CardListContainer = styled.div`
 `;
 
 const CardItem = styled.div`
-	width: 100%;
+	width: 34rem;
 	height: 16rem;
 	display: flex;
 	flex-direction: column;
