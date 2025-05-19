@@ -12,7 +12,7 @@ function CardStatus({ status }: CardStatusProps) {
 	const statusColorMap = {
 		TODO: colors.tagYellow,
 		IN_PROGRESS: colors.tagBlue,
-		COMPLETE: colors.tagGreen,
+		DONE: colors.tagGreen,
 	};
 	return (
 		<StatusWrapper>

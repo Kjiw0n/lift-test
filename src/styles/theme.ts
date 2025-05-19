@@ -31,6 +31,11 @@ export const theme = {
 		tagYellow: '#facc15',
 		tagRed: '#f87171',
 		tagPurple: '#c084fc',
+
+		primary: '#007BFF',
+		primaryHover: '#0056b3',
+		secondary: '#6C757D',
+		secondaryHover: '#5A6268',
 	},
 
 	colorChip: {
