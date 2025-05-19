@@ -4,11 +4,26 @@ import googleImg from '@/assets/google-logo.png';
 import githubImg from '@/assets/github-logo.png';
 import { AuthInput, AuthButton, AuthTitle, AuthInputContainer } from '@/components/common/AuthComponents';
 import SignupModal from '@/components/SignupModal';
+import userLogin from '@/apis/auth/login';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
 	const [pw, setPw] = useState('');
 	const [isSignupOpen, setIsSignupOpen] = useState(false);
+
+	const handleLogin = async () => {
+		try {
+			const res = await userLogin({ email, password: pw });
+			localStorage.setItem('access_token', res.accessToken);
+			localStorage.setItem('refresh_token', res.refreshToken);
+			alert('로그인 성공!');
+			navigate('/');
+		} catch (err: any) {
+			alert(err?.response?.data?.message || err.message || '로그인 실패');
+		}
+	};
 
 	return (
 		<LoginPageLayout>
@@ -22,7 +37,7 @@ const LoginPage = () => {
 				<AuthInputContainer>
 					<AuthInput type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
 					<AuthInput type="password" value={pw} onChange={(e) => setPw(e.target.value)} placeholder="password" />
-					<AuthButton>로그인</AuthButton>
+					<AuthButton onClick={handleLogin}>로그인</AuthButton>
 					<LoginTextContainer>
 						{isSignupOpen && <SignupModal onClose={() => setIsSignupOpen(false)} />}
 						<LoginText onClick={() => setIsSignupOpen(true)}>회원가입</LoginText>
