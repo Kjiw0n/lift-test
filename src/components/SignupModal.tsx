@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import { AuthInput, AuthButton, AuthTitle, AuthInputContainer } from '@/components/common/AuthComponents';
 import IconButton from './common/IconButton';
+import userSignup from '@/apis/auth/signup';
 
 type Props = {
 	onClose: () => void;
@@ -11,6 +12,22 @@ function SignupModal({ onClose }: Props) {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [pw, setPw] = useState('');
+	const [loading, setLoading] = useState(false);
+
+	const handleSignup = async () => {
+		setLoading(true);
+		try {
+			const message = await userSignup({ name, email, password: pw });
+			alert(message || '회원가입 성공!');
+			setTimeout(() => {
+				onClose();
+			}, 1000);
+		} catch (err: any) {
+			alert(err?.response?.data?.message || err.message || '회원가입 실패');
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	return (
 		<Overlay onClick={onClose}>
@@ -23,7 +40,9 @@ function SignupModal({ onClose }: Props) {
 					<AuthInput type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="name" />
 					<AuthInput type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
 					<AuthInput type="password" value={pw} onChange={(e) => setPw(e.target.value)} placeholder="password" />
-					<AuthButton>회원가입</AuthButton>
+					<AuthButton onClick={handleSignup} disabled={loading}>
+						{loading ? '가입 중...' : '회원가입'}
+					</AuthButton>
 				</AuthInputContainer>
 			</ModalContainer>
 		</Overlay>
