@@ -34,7 +34,11 @@ const LoginPage = () => {
 
 			<LoginContainer>
 				<AuthTitle>Login</AuthTitle>
-				<AuthInputContainer>
+				<AuthInputContainer
+					onKeyDown={(e) => {
+						if (e.key === 'Enter') handleLogin();
+					}}
+				>
 					<AuthInput type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
 					<AuthInput type="password" value={pw} onChange={(e) => setPw(e.target.value)} placeholder="password" />
 					<AuthButton onClick={handleLogin}>로그인</AuthButton>
