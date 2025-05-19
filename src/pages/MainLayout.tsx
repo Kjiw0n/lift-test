@@ -50,6 +50,7 @@ export default MainLayout;
 const LayoutWrapper = styled.div`
 	display: flex;
 	height: 100vh;
+	overflow: hidden;
 `;
 
 const Sidebar = styled.nav`
