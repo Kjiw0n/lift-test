@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 // import axios from '../apis/axios';
 
 import styled from '@emotion/styled';
-import { User } from '@/types/User';
+// import { User } from '@/types/User';
 import { usersdummy } from '@/datas/dummyData';
 import Icon from '@/components/common/Icon';
 
@@ -13,8 +13,9 @@ const ROLE_OPTIONS = [
 ];
 
 export default function UserListPage() {
-	const [users, setUsers] = useState<User[]>(usersdummy);
-	const [error, setError] = useState<string | null>(null);
+	// const [users, setUsers] = useState<User[]>(usersdummy);
+	// const [error, setError] = useState<string | null>(null);
+
 	const [roleFilter, setRoleFilter] = useState<'ALL' | 'USER' | 'ADMIN'>('ALL');
 
 	// useEffect(() => {
@@ -31,8 +32,8 @@ export default function UserListPage() {
 
 	return (
 		<UserListPageLayout>
-			{error && <p>{error}</p>}
-			{!error && users.length === 0 && <p>등록된 유저가 없습니다.</p>}
+			{/* {error && <p>{error}</p>}
+			{!error && users.length === 0 && <p>등록된 유저가 없습니다.</p>} */}
 
 			<Section>
 				<SectionHeader>
