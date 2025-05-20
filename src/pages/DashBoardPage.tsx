@@ -3,8 +3,10 @@ import IconButton from '@/components/common/IconButton';
 import Tag from '@/components/common/Tag';
 import { projectsdummy, recentIssuesdummy } from '@/datas/dummyData';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 function ProjectListPage() {
+	const navigate = useNavigate();
 	return (
 		<DashboardLayout>
 			<PageTitle>내 작업</PageTitle>
@@ -17,7 +19,7 @@ function ProjectListPage() {
 				<ProjectListContainer>
 					{projectsdummy.map((project, i) => (
 						<ProjectWrapper key={i}>
-							<ProjectItem>
+							<ProjectItem onClick={() => navigate('/board')}>
 								<ProjectColorWrapper>
 									<ProjectColor style={{ background: project.color }} />
 								</ProjectColorWrapper>
