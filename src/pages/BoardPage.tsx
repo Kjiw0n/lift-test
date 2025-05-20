@@ -6,10 +6,10 @@ import { CardType } from '@/types/Card';
 
 import { dummyBoards } from '@/datas/dummyData';
 
-import CardStatus from '@/components/CardStatus';
 import IconButton from '@/components/common/IconButton';
 import AIChatModal from '@/components/AIChatModal';
 import CardDetailModal from '@/components/CardDetailModal';
+import Card from '@/components/Card';
 
 type Props = {
 	boards?: BoardType[];
@@ -20,7 +20,7 @@ const BoardPage = ({ boards = dummyBoards }: Props) => {
 	const [isAIModalOpen, setIsAIModalOpen] = useState(false);
 	const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
 
-	const openModal = (card: CardType) => {
+	const handleOpenModal = (card: CardType) => {
 		setSelectedCard(card);
 		setIsModalOpen(true);
 	};
@@ -53,11 +53,7 @@ const BoardPage = ({ boards = dummyBoards }: Props) => {
 						</BoardHeader>
 						<CardListContainer>
 							{(board.cards ?? []).map((card, idx) => (
-								<CardItem key={idx} onClick={() => openModal(card)}>
-									<CardStatus status={card.status} />
-									<CardTitle>{card.title}</CardTitle>
-									<CardDescription>{card.description}</CardDescription>
-								</CardItem>
+								<Card key={idx} onClick={() => handleOpenModal(card)} card={card} />
 							))}
 						</CardListContainer>
 					</BoardItem>
@@ -166,39 +162,4 @@ const CardListContainer = styled.div`
 	&::-webkit-scrollbar {
 		display: none; /* 크롬, 사파리, 엣지 */
 	}
-`;
-
-const CardItem = styled.div`
-	width: 34rem;
-	height: 14rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-
-	border: 2px solid ${({ theme }) => theme.colors.border};
-	border-radius: 20px;
-	background-color: ${({ theme }) => theme.colors.cardBackground};
-	box-shadow: 0 4px 8px ${({ theme }) => theme.colors.shadow};
-
-	box-sizing: border-box;
-	padding: 2rem;
-
-	gap: 1.5rem;
-`;
-
-const CardTitle = styled.p`
-	font-size: 2rem;
-	font-weight: 500;
-	color: ${({ theme }) => theme.colors.title};
-`;
-
-const CardDescription = styled.p`
-	font-size: 1.6rem;
-	font-weight: 400;
-	line-height: 2.4rem;
-	color: ${({ theme }) => theme.colors.secondaryText};
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 `;
